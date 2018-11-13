@@ -10,7 +10,6 @@ if(!$user->isLoggedIn()){
     $hasCategories = $_db->get('biz_categories', array('bizcat_id', '>', 0))->results();
     
     if(!$hasCategories) {
-        Session::flash('success', 'You validation was successful');
         Redirect::to('category');
     }
 }

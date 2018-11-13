@@ -12,13 +12,13 @@ if(Session::exists('home')){
   <p>Hello <a href="#"><?php echo escape($user->data()->admin_name) ?></a></p>
   <div>
      <div> 
-        <h4> Available categories</h4>
+        <h4> Admin Dashboard</h4>
         <div> <!--whatever --></div>
-         <a href="category">Create a new category</a>
+         <a href="http://localhost/initstest/views/category">Create a new category</a>
       </div>
 
       <div>
-        <a href="http://localhost/initstest/views/create_listing">Create listing</a>
+        <a href="http://localhost/initstest/views/create_listing">Create new listing</a>
         <br>
         <a href="http://localhost/initstest/views/logout">log out</a>
         <br>

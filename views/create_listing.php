@@ -6,6 +6,13 @@ $user = new User();
 
 if(!$user->isLoggedIn()){
     Redirect::to('login');
+}{
+    $hasCategories = $_db->get('biz_categories', array('bizcat_id', '>', 0))->results();
+    
+    if(!$hasCategories) {
+        Session::flash('success', 'You validation was successful');
+        Redirect::to('category');
+    }
 }
 
 if (Input::exists() && $user->isLoggedIn()) {
@@ -45,6 +52,7 @@ if (Input::exists() && $user->isLoggedIn()) {
 
             Session::flash('success', 'You validation was successful');
             try {
+                    
                 //To do: Adding automated transaction and backup excecution
                 $result1 = $_db->insert('biz_addresses', array(
                     'biz_address' => Input::get('listing_address')   
@@ -144,9 +152,9 @@ if (Input::exists() && $user->isLoggedIn()) {
     <div class="field">
         <label for="listing_category"> Choose categories </label><br/>
         <?php
-        $results = $_db->get('biz_categories', array('bizcat_id', '>', 0));
-        if(count($results)){
-            foreach ($results->results() as $data) {
+
+        if(count($hasCategories)){
+            foreach ($hasCategories as $data) {
                 echo "<input type='checkbox' name='biz_categories[]' value='$data->bizcat_id'>
                 <label>{$data->category_name}</label><br/>";
             }

@@ -42,5 +42,5 @@ $user = new User();
     </div>
     
     <br>
-    <a href="http://localhost/initstest/views/index">go to amdmin dashboard</a>
+    <a href="http://localhost/initstest/views/index">go to admin dashboard</a>
 
